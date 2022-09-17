@@ -24,7 +24,7 @@ public class Driver {
         String platform = ConfigurationReader.getProperty("platform");
         if (Objects.isNull(driver)) {
             switch (platform) {
-                case "android":
+                case "android-calculator":
                     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                     desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
                     desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
