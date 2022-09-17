@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class EtsyWebTest {
     public WebDriver driver;
     @Test
-    public void searchTest() throws MalformedURLException {
+    public void searchTest() throws MalformedURLException, InterruptedException {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 3");
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
@@ -32,13 +32,14 @@ public class EtsyWebTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         driver.get("https://www.etsy.com");
-
+        Thread.sleep(2000);
         WebElement searchField = driver.findElement(By.name("search_query"));
         searchField.sendKeys("heart necklace"+ Keys.ENTER);
 
         WebElement firstResult = driver.findElement(By.xpath("(//h3)[1]"));
         String firstResultText = firstResult.getText();
-        Assertions.assertTrue(firstResultText.contains("heart"));
+        Assertions.assertTrue(firstResultText.toLowerCase().contains("heart"));
+        driver.quit();
 
     }
 }
