@@ -38,6 +38,24 @@ public class Driver {
                     }
                     driver = new AndroidDriver<>(url, desiredCapabilities);
                     break;
+                case "android-swaglab":
+                    DesiredCapabilities desiredCapabilities2 = new DesiredCapabilities();
+                    desiredCapabilities2.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+                    desiredCapabilities2.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
+                    desiredCapabilities2.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.0");
+                    desiredCapabilities2.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 3");
+                    desiredCapabilities2.setCapability(MobileCapabilityType.APP, "C:\\Users\\Oscar\\IdeaProjects\\AppiumTestsB26\\Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
+
+                    desiredCapabilities2.setCapability("appPackage","com.swaglabsmobileapp");
+                    desiredCapabilities2.setCapability("appActivity","com.swaglabsmobileapp.SplashActivity");
+
+                    try {
+                        url = new URL("http://localhost:4723/wd/hub");
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    driver = new AndroidDriver<>(url, desiredCapabilities2);
+                    break;
             }
         }
         return driver;
