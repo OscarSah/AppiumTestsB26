@@ -5,6 +5,7 @@ import com.cydeo.utils.Driver;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -31,6 +32,13 @@ public class SwagLabTest {
     MobileElement products = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-Cart drop zone\"]/android.view.ViewGroup"));
 
     Assertions.assertTrue(products.isDisplayed());
+
+
+    // Scroll into view by displayed text, the method is inside AndroidDriver class so I am casting first
+    ((AndroidDriver)driver).findElementsByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Policy\"));");
+
+
+
 
 
 
